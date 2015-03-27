@@ -1,0 +1,20 @@
+td {
+    border: 1px solid black;
+}
+
+
+table{
+  cellpadding="90";
+
+}
+
+img {
+    position : fixed;
+    top: 20px;
+    right: 20px;
+}
+
+footer{
+  position : fixed;
+  bottom: 0px;
+}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Github Finder
+  </title>
+  <!-- <LINK REL="StyleSheet" type="text/css" href="main.css"> -->
+  <!-- <link href="/Users/jonkylek/Sites/githubviewer/templates/main.css" rel="stylesheet"> -->
+  <!-- <link href="main.css" rel="stylesheet"> -->
+  <style>
+
+
+      td {
+          border: 1px solid black;
+      }
+
+
+      table{
+        cellpadding="90";
+
+      }
+
+      img {
+          position : fixed;
+          top: 50px;
+          right: 20px;
+      }
+
+      footer{
+        position : fixed;
+        bottom: 0px;
+      }
+
+  </style>
+
+</head>
+<body>
+  <p>Welcome to Github user finder.  Here you can search for Github users and see
+    the information that is available on them based on their github information.</p>
+  <br>
+
+  Github Info On: <b><div id="userName"></div></b>
+
+  <br>
+  <table id="myTable" cellpadding="5";>
+    <tr>
+      <td>User Name</td>
+      <td id="userName"></td>
+    </tr>
+    <tr>
+      <td>User Id</td>
+      <td id="userId"></td>
+    </tr>
+    <tr>
+      <td>Avatar</td>
+      <td id="avatar"></td>
+    </tr>
+    <tr>
+      <td>Gravatar</td>
+      <td id="gravatar"></td>
+    </tr>
+    <tr>
+      <td>URL</td>
+      <td id="url"></td>
+    </tr>
+    <tr>
+      <td>Html URL</td>
+      <td id="htmlurl"></td>
+    </tr>
+    <tr>
+      <td>Followers URL</td>
+      <td id="followersurl"></td>
+    </tr>
+    <tr>
+      <td>Following URL</td>
+      <td id="followingurl"></td>
+    </tr>
+    <tr>
+      <td>Gists</td>
+      <td id="gists"></td>
+    </tr>
+    <tr>
+      <td>Starred</td>
+      <td id="starred"></td>
+    </tr>
+    <tr>
+      <td>Subscriptions</td>
+      <td id="subscriptions"></td>
+    </tr>
+    <tr>
+      <td>Organizations</td>
+      <td id="organizations"></td>
+    </tr>
+    <tr>
+      <td>Repos</td>
+      <td id="repos"></td>
+    </tr>
+    <tr>
+      <td>Events</td>
+      <td id="events"></td>
+    </tr>
+    <tr>
+      <td>Revieved</td>
+      <td id="received"></td>
+    </tr>
+    <tr>
+      <td>Type</td>
+      <td id="type"></td>
+    </tr>
+    <tr>
+      <td>Site Amdin</td>
+      <td id="siteadmin"></td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td id="name"></td>
+    </tr>
+    <tr>
+      <td>Company</td>
+      <td id="company"></td>
+    </tr>
+    <tr>
+      <td>Blog</td>
+      <td id="blog"></td>
+    </tr>
+    <tr>
+      <td>Location</td>
+      <td id="location"></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td id="email"></td>
+    </tr>
+    <tr>
+      <td>Hireable</td>
+      <td id="hireable"></td>
+    </tr>
+    <tr>
+      <td>Bio</td>
+      <td id="bio"></td>
+    </tr>
+    <tr>
+      <td>Public Repos</td>
+      <td id="publicrepos"></td>
+    </tr>
+    <tr>
+      <td>Public Gists</td>
+      <td id="publicgists"></td>
+    </tr>
+    <tr>
+      <td>Followers</td>
+      <td id="followers"></td>
+    </tr>
+    <tr>
+      <td>Following</td>
+      <td id="following"></td>
+    </tr>
+    <tr>
+      <td>Created Date</td>
+      <td id="createdat"></td>
+    </tr>
+    <tr>
+      <td>Updated Date</td>
+      <td id="updatedat"></td>
+    </tr>
+  </table>
+  <SCRIPT LANGUAGE="javascript">
+  //This script gets user info from index page.
+    var locate = window.location
+    var text = String(locate)
+
+    function delineate(str)
+    {
+      equalSign = str.indexOf("=") + 1;
+      var n = str.length;
+      return(str.substring(equalSign, n));
+    }
+    var name = delineate(text);
+    //document.getElementById("userName").innerHTML = "Github User Is: <b>" + name +"</b>";
+    // document.write("Github User Is: <b>" + name +"</b>");
+    // document.getElementById("second").innerHTML = "Github User Is: <b>" + name +"</b>";
+  ////////////////////////////////////////////////////////////////////////////////
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://api.github.com/users/" + name;
+    xmlhttp.open("GET", url, true);
+    var counter = 0;
+
+    xmlhttp.onreadystatechange = function() {
+        //window.alert("The readystate is " + xmlhttp.readyState)
+        //window.alert("The status is " + xmlhttp.status)
+        if (xmlhttp.readyState >= 2 && xmlhttp.status >= 200 && xmlhttp.status <=299 && counter == 0) {
+            var myArr = JSON.parse(xmlhttp.responseText);
+            //window.alert("myArr is: " + myArr);
+            myFunction(myArr);
+        }//else{window.alert("didn't work")}
+    }
+
+    xmlhttp.send();
+
+    function myFunction(arr) {
+        counter = 1;
+
+        document.getElementById("userName").innerHTML = String(arr.login);
+        document.getElementById("userId").innerHTML =arr.id;
+        document.getElementById("avatar").innerHTML =  arr.avatar_url;
+
+
+
+        document.getElementById("gravatar").innerHTML =  arr.gravatar_id;
+        document.getElementById("url").innerHTML =  arr.url;
+        document.getElementById("htmlurl").innerHTML =  arr.html_url;
+        document.getElementById("followersurl").innerHTML =  arr.followers_url;
+        document.getElementById("followingurl").innerHTML =  arr.following_url;
+        document.getElementById("gists").innerHTML =  arr.gists_url;
+        document.getElementById("starred").innerHTML =  arr.starred_url;
+        document.getElementById("subscriptions").innerHTML =  arr.subscriptions_url;
+        document.getElementById("organizations").innerHTML =  arr.organizations_url;
+        document.getElementById("repos").innerHTML =  arr.repos_url;      document.getElementById("events").innerHTML =  arr.events_url;      document.getElementById("received").innerHTML =  arr.received_events_url;      document.getElementById("type").innerHTML =  arr.type;
+        document.getElementById("siteadmin").innerHTML =  arr.site_admin;     document.getElementById("name").innerHTML =  arr.name;
+        document.getElementById("company").innerHTML =  arr.company;     document.getElementById("blog").innerHTML =  arr.blog;
+        document.getElementById("location").innerHTML = arr.location;
+        document.getElementById("email").innerHTML =  arr.email;
+        document.getElementById("hireable").innerHTML =  arr.hireable;
+        document.getElementById("bio").innerHTML =  arr.bio;
+        document.getElementById("publicrepos").innerHTML =  arr.public_repos;
+        document.getElementById("publicgists").innerHTML =  arr.public_gists;
+        document.getElementById("followers").innerHTML = arr.followers;
+        document.getElementById("following").innerHTML =  arr.following;
+        document.getElementById("createdat").innerHTML =  arr.created_at;
+        document.getElementById("updatedat").innerHTML =  arr.updated_at;
+
+        var img = document.createElement("img");
+        img.src = arr.avatar_url;
+        document.body.appendChild(img);
+        // var location document.getElementById("logoImg");
+        // var img = document.createElement("img");
+        // img.src = arr.avatar_url;
+        // location.appendChild(img);
+    }
+
+  //////////////////////////////////////////////////////////////////////////
+
+  </SCRIPT>
+  <footer>
+    <button onclick="javascript:history.go(-1)">Back</button>
+  </footer>
+
+
+    <!-- myvar = getURLParameter(document.URL);
+    window.alert("This "+getURLParameter(document.URL)) -->
+
+
+</body>
+</html>

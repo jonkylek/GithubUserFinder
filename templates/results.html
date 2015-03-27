@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<b>Welcome to the results.</b>
+<br>
+<p id="userName"></p>
+<br><div id="userId"></div>
+<br><div id="avatar"></div>
+<br><div id="gravatar"></div>
+<br><div id="url"></div>
+<br><div id="htmlurl"></div>
+<br><div id="followersurl"></div>
+<br><div id="followingurl"></div>
+<br><div id="gists"></div>
+<br><div id="starred"></div>
+<br><div id="subscriptions"></div>
+<br><div id="organizations"></div>
+<br><div id="repos"></div>
+<br><div id="events"></div>
+<br><div id="received"></div>
+<br><div id="type"></div>
+<br><div id="siteadmin"></div>
+<br><div id="name"></div>
+<br><div id="company"></div>
+<br><div id="blog"></div>
+<br><div id="location"></div>
+<br><div id="email"></div>
+<br><div id="hireable"></div>
+<br><div id="bio"></div>
+<br><div id="publicrepos"></div>
+<br><div id="publicgists"></div>
+<br><div id="followers"></div>
+<br><div id="following"></div>
+<br><div id="createdat"></div>
+<br><div id="updatedat"></div>
+
+<SCRIPT LANGUAGE="javascript">
+//This script gets user info from index page.
+  var locate = window.location
+  var text = String(locate)
+
+  function delineate(str)
+  {
+    equalSign = str.indexOf("=") + 1;
+    var n = str.length;
+    return(str.substring(equalSign, n));
+  }
+  var name = delineate(text);
+  //document.getElementById("userName").innerHTML = "Github User Is: <b>" + name +"</b>";
+  // document.write("Github User Is: <b>" + name +"</b>");
+  // document.getElementById("second").innerHTML = "Github User Is: <b>" + name +"</b>";
+////////////////////////////////////////////////////////////////////////////////
+  var xmlhttp = new XMLHttpRequest();
+  var url = "https://api.github.com/users/" + name;
+  xmlhttp.open("GET", url, true);
+  var counter = 0;
+
+  xmlhttp.onreadystatechange = function() {
+      //window.alert("The readystate is " + xmlhttp.readyState)
+      //window.alert("The status is " + xmlhttp.status)
+      if (xmlhttp.readyState >= 2 && xmlhttp.status >= 200 && xmlhttp.status <=299 && counter == 0) {
+          var myArr = JSON.parse(xmlhttp.responseText);
+          //window.alert("myArr is: " + myArr);
+          myFunction(myArr);
+      }//else{window.alert("didn't work")}
+  }
+
+  xmlhttp.send();
+  function myFunction(arr) {
+      counter = 1;
+
+      document.getElementById("userName").innerHTML = "UserName: " + String(arr.login);
+      document.getElementById("userId").innerHTML = "UserId: " + arr.id;
+      document.getElementById("avatar").innerHTML = "Avatar: " + arr.avatar_url;
+      var img = document.createElement("img");
+      img.src = arr.avatar_url;
+      document.body.appendChild(img);
+      document.getElementById("gravatar").innerHTML = "Gravatar_id: " + arr.gravatar_id;
+      document.getElementById("url").innerHTML = "URL: " + arr.url;
+      document.getElementById("htmlurl").innerHTML = "HTML_URL: " + arr.html_url;
+      document.getElementById("followersurl").innerHTML = "Followers_URL: " + arr.followers_url;
+      document.getElementById("followingurl").innerHTML = "Following_URL: " + arr.following_url;
+      document.getElementById("gists").innerHTML = "Gists_URL: " + arr.gists_url;
+      document.getElementById("starred").innerHTML = "Starred: " + arr.starred_url;
+      document.getElementById("subscriptions").innerHTML = "Subscriptions: " + arr.subscriptions_url;
+      document.getElementById("organizations").innerHTML = "Organizatoins: " + arr.organizations_url;
+      document.getElementById("repos").innerHTML = "Repos: " + arr.repos_url;      document.getElementById("events").innerHTML = "Events: " + arr.events_url;      document.getElementById("received").innerHTML = "Recieved: " + arr.received_events_url;      document.getElementById("type").innerHTML = "Types: " + arr.type;
+      document.getElementById("siteadmin").innerHTML = "Site_Admin: " + arr.site_admin;     document.getElementById("name").innerHTML = "Name: " + arr.name;     document.getElementById("company").innerHTML = "Company: " + arr.company;     document.getElementById("blog").innerHTML = "Blog: " + arr.blog;
+      document.getElementById("location").innerHTML = "Location: " + arr.location;
+      document.getElementById("email").innerHTML = "Email: " + arr.email;
+      document.getElementById("hireable").innerHTML = "Hireable: " + arr.hireable;
+      document.getElementById("bio").innerHTML = "Bio: " + arr.bio;
+      document.getElementById("publicrepos").innerHTML = "Public Repos: " + arr.public_repos;
+      document.getElementById("publicgists").innerHTML = "Public Gists: " + arr.public_gists;
+      document.getElementById("followers").innerHTML = "Followers: " + arr.followers;
+      document.getElementById("following").innerHTML = "Following: " + arr.following;
+      document.getElementById("createdat").innerHTML = "Created Date: " + arr.created_at;
+      document.getElementById("updatedat").innerHTML = "Updated Date: " + arr.updated_at;
+
+    function getImageUrl()
+        return imageUrl;
+
+  }
+
+//////////////////////////////////////////////////////////////////////////
+
+</SCRIPT>
+<A HREF="javascript:history.go(-1)">Back</A>
+
+
+
+  <!-- myvar = getURLParameter(document.URL);
+  window.alert("This "+getURLParameter(document.URL)) -->
+
+{% endblock %}

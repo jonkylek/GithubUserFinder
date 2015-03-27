@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>GitHub Finder</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+
+    <style>
+      body{
+        max-width: 100%;
+      }
+      div.container{
+        max-width: 587px;
+      }
+      .form-signin {
+        max-width: 400px;
+        padding: 15px;
+        margin: 0px auto;
+      }
+    </style>
+    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin" action="results" method="get">
+        <h2 class="form-signin-heading">Enter a github user name</h2>
+        This is where you can search for people using Github and see thier public information.
+
+        <label for="inputEmail" class="sr-only">User:</label>
+        <input type="text" name="userName" class="form-control" placeholder="name" required autofocus>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
+      </form>
+
+    </div>
+  <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
