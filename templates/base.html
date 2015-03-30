@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>
-    Github Finder
-  </title>
-  <!-- <LINK REL="StyleSheet" type="text/css" href="main.css"> -->
-  <LINK REL=stylesheet HREF="main.css" TYPE="text/css" >
-</head>
-<body>
-  {% block content %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>GitHub Finder</title>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/main.css" rel="stylesheet">
 
-  {% endblock %}
-</body>
+  </head>
+  <body>
+    {% block bodyBlock %}
+    {% endblock bodyBlock %}
+
+    <footer>
+      <p>A project by Jon Kennedy for FSO</p>   
+    </footer>
+
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/boostrap-min.js"></script>
+  <script src="static/js/githubviewer.js"></script>
+  </body>
 </html>

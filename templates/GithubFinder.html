@@ -1,283 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
-    <title>Cover Template for Bootstrap</title>
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
-    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+{% extends "base.html" %}
+{% block bodyBlock %}
+<div class="container">
+  <h1>Github User Finder</h1>
+  <h1>Look up github users</h1>
+  <p class="lead">You have successfully found a github user.</p>
+</div>
 
-    <style>
-      #myTable {
-        text-align: left;
-      }
-      .masthead {
-          position: relative;
-          top: 0px;
-      }
-      td {
-          border: 1px solid gray;
-          padding: 7px;
-      }
-      .btn {
+<div class="container">
+  <table class="table table-striped table-bordered table-hover">
+    <tr>
+      <td>User Name</td>
+      <td id="userName"></td>
+    </tr>
+    <tr>
+      <td>User Id</td>
+      <td id="userId"></td>
+    </tr>
+    <tr>
+      <td>Avatar</td>
+      <td id="avatar"></td>
+    </tr>
+    <tr>
+      <td>Gravatar</td>
+      <td id="gravatar"></td>
+    </tr>
+    <tr>
+      <td>URL</td>
+      <td id="url"></td>
+    </tr>
+    <tr>
+      <td>Html URL</td>
+      <td id="htmlurl"></td>
+    </tr>
+    <tr>
+      <td>Followers URL</td>
+      <td id="followersurl"></td>
+    </tr>
+    <tr>
+      <td>Following URL</td>
+      <td id="followingurl"></td>
+    </tr>
+    <tr>
+      <td>Gists</td>
+      <td id="gists"></td>
+    </tr>
+    <tr>
+      <td>Starred</td>
+      <td id="starred"></td>
+    </tr>
+    <tr>
+      <td>Subscriptions</td>
+      <td id="subscriptions"></td>
+    </tr>
+    <tr>
+      <td>Organizations</td>
+      <td id="organizations"></td>
+    </tr>
+    <tr>
+      <td>Repos</td>
+      <td id="repos"></td>
+    </tr>
+    <tr>
+      <td>Events</td>
+      <td id="events"></td>
+    </tr>
+    <tr>
+      <td>Revieved</td>
+      <td id="received"></td>
+    </tr>
+    <tr>
+      <td>Type</td>
+      <td id="type"></td>
+    </tr>
+    <tr>
+      <td>Site Amdin</td>
+      <td id="siteadmin"></td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td id="name"></td>
+    </tr>
+    <tr>
+      <td>Company</td>
+      <td id="company"></td>
+    </tr>
+    <tr>
+      <td>Blog</td>
+      <td id="blog"></td>
+    </tr>
+    <tr>
+      <td>Location</td>
+      <td id="location"></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td id="email"></td>
+    </tr>
+    <tr>
+      <td>Hireable</td>
+      <td id="hireable"></td>
+    </tr>
+    <tr>
+      <td>Bio</td>
+      <td id="bio"></td>
+    </tr>
+    <tr>
+      <td>Public Repos</td>
+      <td id="publicrepos"></td>
+    </tr>
+    <tr>
+      <td>Public Gists</td>
+      <td id="publicgists"></td>
+    </tr>
+    <tr>
+      <td>Followers</td>
+      <td id="followers"></td>
+    </tr>
+    <tr>
+      <td>Following</td>
+      <td id="following"></td>
+    </tr>
+    <tr>
+      <td>Created Date</td>
+      <td id="createdat"></td>
+    </tr>
+    <tr>
+      <td>Updated Date</td>
+      <td id="updatedat"></td>
+    </tr>
+  <table>
+</div>
 
-      }
-      .mastfoot {
-          text-align: right;
-      }
-      .masthead, .mastfoot, .cover-container {
-          width: 1000px;
-      }
+<a href="javascript:history.go(-1)" class="btn btn-lg btn-default">Back</a>
 
-    </style>
+{% endblock bodyBlock %}
 
-  </head>
-
-  <body>
-
-    <div class="site-wrapper">
-
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Github User Finder</h3>
-            </div>
-          </div>
-
-
-          <div class="inner cover">
-            <h1 class="cover-heading">Look up github users</h1>
-            <p class="lead" id="welcomeMessage">You have successfully found a github user.
-            <br>Their details are as follows:</p>
-<!-- //////////////////////////////////////////////////////////////////////////////// -->
-<table id="myTable" cellpadding="5" align="center";>
-  <tr>
-    <td>User Name</td>
-    <td id="userName"></td>
-  </tr>
-  <tr>
-    <td>User Id</td>
-    <td id="userId"></td>
-  </tr>
-  <tr>
-    <td>Avatar</td>
-    <td id="avatar"></td>
-  </tr>
-  <tr>
-    <td>Gravatar</td>
-    <td id="gravatar"></td>
-  </tr>
-  <tr>
-    <td>URL</td>
-    <td id="url"></td>
-  </tr>
-  <tr>
-    <td>Html URL</td>
-    <td id="htmlurl"></td>
-  </tr>
-  <tr>
-    <td>Followers URL</td>
-    <td id="followersurl"></td>
-  </tr>
-  <tr>
-    <td>Following URL</td>
-    <td id="followingurl"></td>
-  </tr>
-  <tr>
-    <td>Gists</td>
-    <td id="gists"></td>
-  </tr>
-  <tr>
-    <td>Starred</td>
-    <td id="starred"></td>
-  </tr>
-  <tr>
-    <td>Subscriptions</td>
-    <td id="subscriptions"></td>
-  </tr>
-  <tr>
-    <td>Organizations</td>
-    <td id="organizations"></td>
-  </tr>
-  <tr>
-    <td>Repos</td>
-    <td id="repos"></td>
-  </tr>
-  <tr>
-    <td>Events</td>
-    <td id="events"></td>
-  </tr>
-  <tr>
-    <td>Revieved</td>
-    <td id="received"></td>
-  </tr>
-  <tr>
-    <td>Type</td>
-    <td id="type"></td>
-  </tr>
-  <tr>
-    <td>Site Amdin</td>
-    <td id="siteadmin"></td>
-  </tr>
-  <tr>
-    <td>Name</td>
-    <td id="name"></td>
-  </tr>
-  <tr>
-    <td>Company</td>
-    <td id="company"></td>
-  </tr>
-  <tr>
-    <td>Blog</td>
-    <td id="blog"></td>
-  </tr>
-  <tr>
-    <td>Location</td>
-    <td id="location"></td>
-  </tr>
-  <tr>
-    <td>Email</td>
-    <td id="email"></td>
-  </tr>
-  <tr>
-    <td>Hireable</td>
-    <td id="hireable"></td>
-  </tr>
-  <tr>
-    <td>Bio</td>
-    <td id="bio"></td>
-  </tr>
-  <tr>
-    <td>Public Repos</td>
-    <td id="publicrepos"></td>
-  </tr>
-  <tr>
-    <td>Public Gists</td>
-    <td id="publicgists"></td>
-  </tr>
-  <tr>
-    <td>Followers</td>
-    <td id="followers"></td>
-  </tr>
-  <tr>
-    <td>Following</td>
-    <td id="following"></td>
-  </tr>
-  <tr>
-    <td>Created Date</td>
-    <td id="createdat"></td>
-  </tr>
-  <tr>
-    <td>Updated Date</td>
-    <td id="updatedat"></td>
-  </tr>
-</table>
-<SCRIPT LANGUAGE="javascript">
-  var locate = window.location
-  var text = String(locate)
-  function delineate(str)
-  {
-    equalSign = str.indexOf("=") + 1;
-    var n = str.length;
-    return(str.substring(equalSign, n));
-  }
-  var name = delineate(text);
-  var xmlhttp = new XMLHttpRequest();
-  var url = "https://api.github.com/users/" + name;
-  xmlhttp.open("GET", url, true);
-  var counter = 0;
-
-  xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState >= 2 && xmlhttp.status >= 200 && xmlhttp.status <=299 ) {
-          var myArr = JSON.parse(xmlhttp.responseText);
-          myFunction(myArr);
-      }else{
-        // window.alert("It's false");
-        document.getElementById("welcomeMessage").innerHTML = "Sorry No User Found By That Name";
-        for(var i = document.getElementById("myTable").rows.length; i > 0;i--)
-        {
-          document.getElementById("myTable").deleteRow(i -1);
-        }
-      }
-  }
-  xmlhttp.send();
-
-
-  function myFunction(arr) {
-      if(counter!=1){
-        document.getElementById("userName").innerHTML = String(arr.login);
-        document.getElementById("userId").innerHTML =arr.id;
-        document.getElementById("avatar").innerHTML =  arr.avatar_url;
-        document.getElementById("gravatar").innerHTML =  arr.gravatar_id;
-        document.getElementById("url").innerHTML =  arr.url;
-        document.getElementById("htmlurl").innerHTML =  arr.html_url;
-        document.getElementById("followersurl").innerHTML =  arr.followers_url;
-        document.getElementById("followingurl").innerHTML =  arr.following_url;
-        document.getElementById("gists").innerHTML =  arr.gists_url;
-        document.getElementById("starred").innerHTML =  arr.starred_url;
-        document.getElementById("subscriptions").innerHTML =  arr.subscriptions_url;
-        document.getElementById("organizations").innerHTML =  arr.organizations_url;
-        document.getElementById("repos").innerHTML =  arr.repos_url;      document.getElementById("events").innerHTML =  arr.events_url;      document.getElementById("received").innerHTML =  arr.received_events_url;      document.getElementById("type").innerHTML =  arr.type;
-        document.getElementById("siteadmin").innerHTML =  arr.site_admin;     document.getElementById("name").innerHTML =  arr.name;
-        document.getElementById("company").innerHTML =  arr.company;     document.getElementById("blog").innerHTML =  arr.blog;
-        document.getElementById("location").innerHTML = arr.location;
-        document.getElementById("email").innerHTML =  arr.email;
-        document.getElementById("hireable").innerHTML =  arr.hireable;
-        document.getElementById("bio").innerHTML =  arr.bio;
-        document.getElementById("publicrepos").innerHTML =  arr.public_repos;
-        document.getElementById("publicgists").innerHTML =  arr.public_gists;
-        document.getElementById("followers").innerHTML = arr.followers;
-        document.getElementById("following").innerHTML =  arr.following;
-        document.getElementById("createdat").innerHTML =  arr.created_at;
-        document.getElementById("updatedat").innerHTML =  arr.updated_at;
-        var img = document.createElement("img");
-        img.src = arr.avatar_url;
-        document.body.appendChild(img);
-        counter = 1;
-      }
-  }
-</SCRIPT>
-
-
-
-
-
-<!-- //////////////////////////////////////////////////////////////////////////////// -->
-            <p class="lead">
-              <a href="javascript:history.go(-1)" class="btn btn-lg btn-default">Back</a>
-            </p>
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>A project by Jon Kennedy for FSO</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
-</html>

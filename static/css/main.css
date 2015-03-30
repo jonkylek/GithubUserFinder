@@ -1,0 +1,30 @@
+body{
+max-width: 100%;
+}
+div.container{
+max-width: 587px;
+}
+.form-signin {
+max-width: 400px;
+padding: 15px;
+margin: 0px auto;
+}
+#myTable {
+  text-align: left;
+}
+.masthead {
+    position: relative;
+    top: 0px;
+}
+td {
+    border: 1px solid gray;
+    padding: 7px;
+}
+.btn {
+}
+.mastfoot {
+    text-align: right;
+}
+.masthead, .mastfoot, .cover-container {
+    width: 1000px;
+}
